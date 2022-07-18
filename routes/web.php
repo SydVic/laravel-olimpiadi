@@ -22,6 +22,11 @@ Route::middleware('auth')
     ->prefix('admin')
     ->group(function(){
         Route::get('/', 'HomeController@index')->name('home');
+        Route::resource('athletes', 'AthleteController');
     });
 
+
+Route::get('{any?}', function(){
+        return view('guest.home');
+})->where('any', '.*');
 

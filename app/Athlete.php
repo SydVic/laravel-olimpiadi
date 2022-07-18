@@ -10,7 +10,7 @@ class Athlete extends Model
         return $this->belongsTo('App\Nation');
     }
 
-    public function category() {
+    public function categories() {
         return $this->belongsToMany('App\Category');
     }
 }
