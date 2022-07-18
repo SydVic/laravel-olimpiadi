@@ -14,7 +14,12 @@ class AddNationIdToAthletes extends Migration
     public function up()
     {
         Schema::table('athletes', function (Blueprint $table) {
-            //
+            $table->unsignedBigInteger('nation_id')->nullable()->after('name');
+
+            $table->foreign('nation_id')
+                ->references('id')
+                ->on('nations')
+                ->onDelete('set null');
         });
     }
 
@@ -26,7 +31,8 @@ class AddNationIdToAthletes extends Migration
     public function down()
     {
         Schema::table('athletes', function (Blueprint $table) {
-            //
+            $table->dropForeign('athletes_nation_id_foreign');
+            $table->dropColumn('nation_id');
         });
     }
 }

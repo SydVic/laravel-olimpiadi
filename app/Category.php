@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     public function athletes() {
-        return $this->hasMay('App\Athlete');
+        return $this->belongsToMany('App\Athlete');
     }
 }
